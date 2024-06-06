@@ -24,7 +24,7 @@ const Card = ({ title }) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:8080/sprint/section/${section}/notes`
+        `https://sprintretroboardapp.onrender.com/sprint/section/${section}/notes`
       );
       const json = await response.json();
       setNotes(json);
@@ -44,10 +44,10 @@ useEffect(() => {
 
 const deleteNote = async (section, noteId) => {
 const response = await fetch(
-`http://localhost:8080/sprint/section/${section}/notes/${noteId}`,
-{
-        method: "DELETE",
-}
+  `https://sprintretroboardapp.onrender.com/sprint/section/${section}/notes/${noteId}`,
+  {
+    method: "DELETE",
+  }
 );
  const message = await response.text();
  dispatch(setSnackBarMessage(message));
@@ -55,15 +55,15 @@ const response = await fetch(
 
 const saveNote = async (section, note, noteId) => {
 const response = await fetch(
- `http://localhost:8080/sprint/section/${section}/notes/${noteId}`,
- {
- method: "PUT",
- body: JSON.stringify(note),
-headers: {
- Accept: "application/json",
-  "Content-Type": "application/json",
- },
-}
+  `https://sprintretroboardapp.onrender.com/sprint/section/${section}/notes/${noteId}`,
+  {
+    method: "PUT",
+    body: JSON.stringify(note),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }
 );
   const message = await response.text();
   dispatch(setSnackBarMessage(message));
@@ -72,7 +72,7 @@ headers: {
 
 const createNote = async (section, note) => {
   const response = await fetch(
-    `http://localhost:8080/sprint/section/${section}/notes`,
+    `https://sprintretroboardapp.onrender.com/sprint/section/${section}/notes`,
     {
       method: "POST",
       body: JSON.stringify(note),

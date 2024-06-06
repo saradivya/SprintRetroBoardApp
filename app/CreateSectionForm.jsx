@@ -14,14 +14,17 @@ const CreateSectionForm = ({ toggleModal , sprintBoardNumber }) => {
   const dispatch = useDispatch();
 
   const saveRetroSectionToSprintBoard = async (sectionDetail) => {
-    const response = await fetch("http://localhost:8080/sprint/section", {
-      method: "POST",
-      body: JSON.stringify(sectionDetail),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://sprintretroboardapp.onrender.com/sprint/section",
+      {
+        method: "POST",
+        body: JSON.stringify(sectionDetail),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const message = await response.text();
     dispatch(setSnackBarMessage(message));
     dispatch(fetchSprintBoardSections(sectionDetail.sprintBoardNumber));

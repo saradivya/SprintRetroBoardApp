@@ -11,14 +11,17 @@ const CreateRetroBoardForm = ({ toggleModal, sprintBoardNumber }) => {
   const dispatch = useDispatch();
 
   const saveRetroBoard = async (sprintBoard) => {
-    const response = await fetch("http://localhost:8080/sprint/retroBoard", {
-      method: "POST",
-      body: JSON.stringify(sprintBoard),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://sprintretroboardapp.onrender.com/sprint/retroBoard",
+      {
+        method: "POST",
+        body: JSON.stringify(sprintBoard),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const message = await response.text();
     dispatch(setSnackBarMessage(message));
     dispatch(fetchSprintBoard());

@@ -4,7 +4,7 @@ import * as actions from "../actions/action";
 const getSprintBoardSection = async (sprintBoard) => {
   console.log("Call API");
   const response = await fetch(
- `http://localhost:8080/sprint/section/board/${sprintBoard}`
+    `https://sprintretroboardapp.onrender.com/sprint/section/board/${sprintBoard}`
   );
   const json = await response.json();
   return json;
